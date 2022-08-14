@@ -59,6 +59,7 @@ export const getAllUser = async(req,res) => {
 export const getSingleUser = async(req,res)=>{
     try {
         const resp = await User.findById(req.params.id)
+        return res.status(200).json({data:resp,error:false})
     } catch (error) {
         console.log('get single user error: ',error)
         return res.status(500).json({data:error,error:true})
