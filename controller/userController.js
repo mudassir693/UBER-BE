@@ -19,7 +19,7 @@ export const registerUser = async (req,res)=>{
         })
 
         const resp = await newUser.save()
-        return res.status(200).json({data:resp,error:false})
+        return res.status(201).json({data:resp,error:false})
     } catch (error) {
         console.log('register user err: ',error)
         return res.status(500).json({data:"register user error",error:true})
@@ -45,3 +45,43 @@ export const loginFunction = async (req,res) => {try {
     console.log('login error: ',error)
     return res.status(500).json({data:"user login error: ",error:true})
 }}
+
+export const getAllUser = async(req,res) => {
+    try {
+        const resp = await User.find()
+        return res.status(200).json({data:resp,error:false})
+    } catch (error) {
+        console.log('get users error: ',error)
+        return res.status(500).json({data:error,error:true})
+    }
+}
+
+export const getSingleUser = async(req,res)=>{
+    try {
+        const resp = await User.findById(req.params.id)
+    } catch (error) {
+        console.log('get single user error: ',error)
+        return res.status(500).json({data:error,error:true})
+    }
+}
+
+export const  updateUser = async(req,res) => {
+    try {
+        const {Email,...others} = req.body
+        let updResp = await User.findByIdAndUpdate(req.params.id,{$set:others},{new:true})
+        return res.status(204).json({data:updResp,error:false})
+    } catch (error) {
+        console.log('upd users error: ',error)
+        return res.status(500).json({data:error,error:true})
+    }
+}
+
+export const deleteUser = async(req,res)=>{
+    try {
+        const deleteresp= await User.findByIdAndDelete(req.params.id)
+        return res.status(204).json({data:deleteresp,error:false})
+    } catch (error) {
+        console.log('delete users error: ',error)
+        return res.status(500).json({data:error,error:true})
+    }
+}
