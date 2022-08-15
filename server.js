@@ -10,6 +10,7 @@ import DB_connection from './config/db_Config.js'
 import userRoute from './routes/user.js'
 import driverRoute from './routes/driver.js'
 import carRoute from './routes/car.js'
+import rideRoute from './routes/ride.js'
 
 const app = express()
 
@@ -32,8 +33,11 @@ app.get("/",(req,res)=>{
 app.use('/api/users', userRoute)
 app.use('/api/drivers', driverRoute)
 app.use('/api/cars',carRoute)
+app.use('/api/rides',rideRoute)
 const port = process.env.PORT || 5500
 
 app.listen(port,()=>{
     console.log(`server is running on port : ${port}`)
 })
+
+export default app

@@ -8,6 +8,6 @@ router
     .get('/getAll',getAllCars)
     .get('/getCar/:id',getCarById)
     .put('/update/:id',updcar)
-    .delete('/delete/:id',deleteCarById)
+    .delete('/delete/:id',deleteCar)
 
 export default router
