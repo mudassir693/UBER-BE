@@ -11,7 +11,8 @@ const userSchema = new mongoose.Schema({
         type:String
     },
     CreatedTime:{
-        type:String
+        type:String,
+        default: new Date().toDateString()
     }
 },{
     timestamps:true

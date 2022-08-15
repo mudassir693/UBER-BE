@@ -9,6 +9,7 @@ import DB_connection from './config/db_Config.js'
 //  importing routes:
 import userRoute from './routes/user.js'
 import driverRoute from './routes/driver.js'
+import carRoute from './routes/car.js'
 
 const app = express()
 
@@ -30,6 +31,7 @@ app.get("/",(req,res)=>{
 
 app.use('/api/users', userRoute)
 app.use('/api/drivers', driverRoute)
+app.use('/api/cars',carRoute)
 const port = process.env.PORT || 5500
 
 app.listen(port,()=>{

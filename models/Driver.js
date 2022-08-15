@@ -7,7 +7,10 @@ const driverSchema = new mongoose.Schema({
     CNIC:String,
     Picture:String,
     Address:String,
-    CreatedTime:String
+    CreatedTime:{
+        type:String,
+        default: new Date().toDateString()
+    }
 })
 
 export default mongoose.model('driver',driverSchema)
