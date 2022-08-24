@@ -16,16 +16,26 @@ const rideSchema = new mongoose.Schema({
         type:String
     },
     Distance:{
-        type:Number,
+        type:String,
     },
     Rate:{
         type:String
     },
     PickupLocation:{
-        type: String
+        lat:{
+            type:Number
+        },
+        lng:{
+            type:Number
+        }
     },
     DropLocation:{
-        type:String
+        lat:{
+            type:Number
+        },
+        lng:{
+            type:Number
+        }
     },
     Amount:Number
 })

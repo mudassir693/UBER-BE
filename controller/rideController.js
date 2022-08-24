@@ -58,7 +58,7 @@ export const updRide = async(req,res)=>{
             return res.status(400).json({data:'invalid car _id',error:true})
         }
         let updCar = await Ride.findByIdAndUpdate(req.params.id,{$set:others},{new:true})
-        return res.status(204).jaon({data:updCar,error:false})
+        return res.status(204).json({data:updCar,error:false})
     } catch (error) {
         console.log('upd ride err: ',error)
         return res.status(200).json({data:error,error:true})
@@ -77,6 +77,32 @@ export const deleteRide = async(req,res)=>{
         return res.status(200).json({data:deleteResp,error:false})
     } catch (error) {
         console.log('delete ride error: ',error)
+        return res.status(500).json({data:error,error:true})
+    }
+}
+
+export const getEachRiderRide = async(req,res)=>{
+    try {
+        const resp = await Ride.find({DriverId:req.params.id})
+        return res.status(200).json({data:resp,error:false})
+    } catch (error) {
+        console.log('get driver rides: ',error)
+        return res.status(500).json({data:error,error:true})
+    }
+}
+
+export const getEachRiderStatus = async(req,res)=>{
+    try {
+        console.log(req.query.startTime)
+        // console.log('et: ',req.query.endTime)
+        const resp = await Ride.find({RiderId:req.params.id})
+        let filteredResp = resp.filter(eachRide=>{
+            console.log(new Date(eachRide.PickupTime).getTime())
+           return req.query.endTime==undefined?new Date(eachRide.PickupTime).getTime() > req.query.startTime:new Date(eachRide.PickupTime).getTime() > req.query.startTime && new Date(eachRide.PickupTime).getTime() < req.query.endTime
+        })
+        return res.status(201).json({data:filteredResp,error:false})
+    } catch (error) {
+        console.log('get driver rides by time: ',error)
         return res.status(500).json({data:error,error:true})
     }
 }
