@@ -12,7 +12,7 @@ export const registerDrivers = async(req,res)=>{
         }
 
         const newDriver = new Driver({
-            Name,Email,Contact,CNIC,Picture,Address,CreatedTime
+            Name,LastName,Email,Contact,CNIC,Picture,Address,CreatedTime
         })
 
         const resp = await newDriver.save()
