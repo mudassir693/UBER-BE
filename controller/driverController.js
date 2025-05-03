@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 
 export const registerDrivers = async(req,res)=>{
     try {
+        if(!req.body.Name || !req.body.LastName|| !req.body.Email|| !req.body.Contact|| !req.body.CNIC|| !req.body.Picture|| !req.body.Address|| !req.body.CreatedTime) return {error: "All fields are required."} 
         const {Name,LastName,Email,Contact,CNIC,Picture,Address,CreatedTime} = req.body
 
         const isDriverTheir = await Driver.findOne({$or :[{Email},{CNIC},{Contact}]})
