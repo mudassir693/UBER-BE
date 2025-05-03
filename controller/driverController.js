@@ -1,7 +1,7 @@
 import Driver from '../models/Driver.js'
 import jwt from 'jsonwebtoken'
 
-export const registerDriver = async(req,res)=>{
+export const registerDrivers = async(req,res)=>{
     try {
         const {Name,LastName,Email,Contact,CNIC,Picture,Address,CreatedTime} = req.body
 
