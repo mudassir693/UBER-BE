@@ -1,8 +1,7 @@
 import mongoose from 'mongoose'
 
 const driverSchema = new mongoose.Schema({
-    FirstName:String,
-    LastName: String,
+    Name:String,
     Email:String,
     Contact:String,
     CNIC:String,
