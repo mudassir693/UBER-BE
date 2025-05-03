@@ -1,10 +1,10 @@
 import express from 'express'
-import {registerDriver,loginDriver,getAllDrivers,getSingleDriver,updateDriver,deleteDriver } from '../controller/driverController.js'
+import {registerDrivers,loginDriver,getAllDrivers,getSingleDriver,updateDriver,deleteDriver } from '../controller/driverController.js'
 
 const router = express.Router()
 
 router
-    .post('/register', registerDriver)
+    .post('/register', registerDrivers)
     .post('/login', loginDriver)
     .get('/getAllDrivers',getAllDrivers)
     .get('/driver/:id',getSingleDriver)
