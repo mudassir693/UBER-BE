@@ -15,8 +15,8 @@ export const addCar = async(req,res)=>{
             Name,
             Color,
             CarPapers,
-            Active,
-            Verified,
+            false,
+            false,
             CreatedTime
         })
 
