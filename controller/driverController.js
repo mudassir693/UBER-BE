@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 
 export const registerDriver = async(req,res)=>{
     try {
-        const {Name,Email,Contact,CNIC,Picture,Address,CreatedTime} = req.body
+        const {Name,LastName,Email,Contact,CNIC,Picture,Address,CreatedTime} = req.body
 
         const isDriverTheir = await Driver.findOne({$or :[{Email},{CNIC},{Contact}]})
 
