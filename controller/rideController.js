@@ -1,6 +1,6 @@
 import Ride from '../models/Ride.js'
 
-export const addRide = async(req,res)=>{
+export const addRides = async(req,res)=>{
     try {
         const {DriverId,UserId,PickupTime,DropTime,Distance,Rate,PickupLocation,DropLocation,Amount} = req.body
 
